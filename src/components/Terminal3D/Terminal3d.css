@@ -1,0 +1,178 @@
+.terminal3d-section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal3d-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.terminal3d-window {
+  position: relative;
+  padding: 30px;
+  text-align: left;
+  background: var(--terminal-bg);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 15px rgba(0, 255, 0, 0.1);
+  transform-style: preserve-3d;
+  max-width: 800px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 5;
+  font-family: "Lucida Console", Monaco, monospace;
+  overflow: hidden;
+  transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  pointer-events: auto;
+  transform: perspective(1000px) rotateX(5deg);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: perspective(1000px) rotateX(5deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(8deg) translateY(-15px);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(5deg) translateY(0px);
+  }
+}
+
+/* Reuse existing terminal styles but with some modifications */
+.terminal3d-window .terminal-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: #333;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  transition: background 0.5s ease;
+}
+
+.terminal3d-window .terminal-content {
+  margin-top: 10px;
+  color: var(--terminal-fg);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: color 0.5s ease;
+}
+
+.terminal3d-window.terminal-scan-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(51, 255, 51, 0.5);
+  animation: scanline 6s linear infinite;
+  z-index: 2;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+.terminal3d-window::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.1) 51%,
+      transparent 52%
+    );
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 2;
+}
+
+/* Theme-specific styles */
+body.theme-vaporwave .terminal3d-window {
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+body.theme-vaporwave .terminal3d-window.terminal-scan-effect::before {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+body.theme-matrix .terminal3d-window {
+  font-family: 'Courier New', monospace;
+  border: none;
+  background: rgba(0, 8, 0, 0.9);
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 15px rgba(0, 255, 0, 0.15);
+}
+
+body.theme-matrix .terminal3d-window.terminal-scan-effect::before {
+  background: rgba(0, 255, 0, 0.5);
+}
+
+body.theme-light .terminal3d-window {
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+body.theme-light .terminal3d-window.terminal-scan-effect::before {
+  background: rgba(52, 152, 219, 0.3);
+}
+
+body.theme-midnight .terminal3d-window {
+  border: 1px solid rgba(30, 136, 229, 0.3);
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.7),
+    inset 0 0 15px rgba(30, 136, 229, 0.1);
+}
+
+body.theme-midnight .terminal3d-window.terminal-scan-effect::before {
+  background: rgba(30, 136, 229, 0.3);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .terminal3d-window {
+    padding: 30px 20px 20px;
+    width: 85%;
+  }
+  
+  .terminal3d-window .terminal-content {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal3d-window .terminal-content {
+    font-size: 0.8rem;
+  }
+}
