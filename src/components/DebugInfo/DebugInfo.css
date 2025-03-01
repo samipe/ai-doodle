@@ -1,0 +1,115 @@
+/* Debug info panel */
+.debug-info {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--accent);
+    z-index: 100;
+    font-family: monospace;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 15px rgba(255, 0, 153, 0.3);
+    backdrop-filter: blur(5px);
+    min-width: 180px;
+    transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .debug-info h4 {
+    margin: 0 0 10px 0;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 5px;
+    transition: color 0.5s ease, border-color 0.5s ease;
+  }
+  
+  .debug-info span {
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  /* Theme-specific styles */
+  body.theme-vaporwave .debug-info {
+    color: #00ffff;
+    border-color: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+  }
+  
+  body.theme-vaporwave .debug-info h4 {
+    border-color: #ff00ff;
+  }
+  
+  body.theme-vaporwave .debug-info span {
+    color: #ff00ff;
+  }
+  
+  body.theme-matrix .debug-info {
+    color: #88ff88;
+    border-color: #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  }
+  
+  body.theme-matrix .debug-info h4 {
+    border-color: #00ff00;
+  }
+  
+  body.theme-matrix .debug-info span {
+    color: #00ff00;
+  }
+  
+  body.theme-light .debug-info {
+    background: rgba(255, 255, 255, 0.9);
+    color: #555;
+    border-color: #3498db;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.2);
+  }
+  
+  body.theme-light .debug-info h4 {
+    color: #333;
+    border-color: #3498db;
+  }
+  
+  body.theme-light .debug-info span {
+    color: #e74c3c;
+  }
+  
+  body.theme-midnight .debug-info {
+    color: #ff9800;
+    border-color: #1e88e5;
+    box-shadow: 0 0 15px rgba(30, 136, 229, 0.3);
+  }
+  
+  body.theme-midnight .debug-info h4 {
+    border-color: #1e88e5;
+  }
+  
+  body.theme-midnight .debug-info span {
+    color: #1e88e5;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .debug-info {
+      bottom: 70px;
+      left: 10px;
+      width: 240px;
+      max-width: 80vw;
+    }
+    
+    .toggle-debug {
+      bottom: 20px;
+      left: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .debug-info {
+      width: 200px;
+    }
+  }

@@ -1,0 +1,171 @@
+/* Vaporwave Theme */
+body.theme-vaporwave {
+    --primary: #ff00ff;
+    --secondary: #00ffff;
+    --dark: #000066;
+    --darker: #000033;
+    --light: #6666ff;
+    --accent: #ffff00;
+    --glow: #ff00ff;
+    --terminal-bg: #000066;
+    --terminal-fg: #00ffff;
+    font-family: 'VT323', monospace;
+    background-image: 
+      linear-gradient(45deg, rgba(255, 0, 255, 0.1) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 0, 255, 0.1) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0, 255, 255, 0.1) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  }
+  
+  body.theme-vaporwave h1 {
+    font-family: 'Press Start 2P', cursive;
+    letter-spacing: 2px;
+    text-shadow: 4px 4px 0px #00ffff, -4px -4px 0px #ff00ff;
+  }
+  
+  body.theme-vaporwave .section::before {
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(255, 0, 255, 0.1) 0px, rgba(255, 0, 255, 0.1) 2px, transparent 2px, transparent 8px),
+      repeating-linear-gradient(-45deg, rgba(0, 255, 255, 0.1) 0px, rgba(0, 255, 255, 0.1) 2px, transparent 2px, transparent 8px);
+  }
+  
+  body.theme-vaporwave .section:nth-child(odd) {
+    background-color: #000077;
+  }
+  
+  body.theme-vaporwave .section:nth-child(even) {
+    background-color: #000099;
+  }
+  
+  /* Matrix Theme */
+  body.theme-matrix {
+    --primary: #00ff00;
+    --secondary: #33ff33;
+    --dark: #001100;
+    --darker: #000800;
+    --light: #003300;
+    --accent: #88ff88;
+    --glow: #00ff00;
+    --terminal-bg: #000800;
+    --terminal-fg: #00ff00;
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='50%25' y='10' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='50%25' y='20' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E0%3C/text%3E%3Ctext x='50%25' y='30' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='50%25' y='40' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E0%3C/text%3E%3Ctext x='50%25' y='50' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='50%25' y='60' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E0%3C/text%3E%3Ctext x='50%25' y='70' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='50%25' y='80' font-family='monospace' font-size='10' fill='rgba(0,255,0,0.15)' text-anchor='middle'%3E0%3C/text%3E%3C/svg%3E");
+  }
+  
+  body.theme-matrix h1 {
+    font-family: 'VT323', monospace;
+    letter-spacing: 0;
+    font-size: 2.8rem;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  }
+  
+  body.theme-matrix .section::before {
+    background-image: 
+      linear-gradient(0deg, rgba(0, 255, 0, 0.05) 50%, transparent 50%),
+      linear-gradient(90deg, rgba(0, 255, 0, 0.05) 50%, transparent 50%);
+    background-size: 2px 2px;
+  }
+  
+  body.theme-matrix .section:nth-child(odd) {
+    background-color: #001500;
+  }
+  
+  body.theme-matrix .section:nth-child(even) {
+    background-color: #002000;
+  }
+  
+  body.theme-matrix p {
+    font-family: 'VT323', monospace;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Light Theme */
+  body.theme-light {
+    --primary: #3498db;
+    --secondary: #2980b9;
+    --dark: #f5f5f5;
+    --darker: #e0e0e0;
+    --light: #ffffff;
+    --accent: #e74c3c;
+    --glow: rgba(52, 152, 219, 0.5);
+    --terminal-bg: #ffffff;
+    --terminal-fg: #333333;
+    font-family: 'Comfortaa', sans-serif;
+    background-image: 
+      radial-gradient(circle at 100% 50%, transparent 20%, rgba(52, 152, 219, 0.03) 21%, rgba(52, 152, 219, 0.03) 34%, transparent 35%, transparent),
+      radial-gradient(circle at 0% 50%, transparent 20%, rgba(52, 152, 219, 0.03) 21%, rgba(52, 152, 219, 0.03) 34%, transparent 35%, transparent);
+    background-size: 50px 50px;
+    background-position: 0 0;
+  }
+  
+  body.theme-light h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    color: #333;
+    text-shadow: 2px 2px 0px rgba(52, 152, 219, 0.2);
+  }
+  
+  body.theme-light .section::before {
+    background-image: 
+      linear-gradient(45deg, rgba(52, 152, 219, 0.05) 25%, transparent 25%), 
+      linear-gradient(-45deg, rgba(52, 152, 219, 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(52, 152, 219, 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(52, 152, 219, 0.05) 75%);
+    background-size: 20px 20px;
+  }
+  
+  body.theme-light .section:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+  
+  body.theme-light .section:nth-child(even) {
+    background-color: #e8e8e8;
+  }
+  
+  body.theme-light p {
+    color: #555;
+  }
+  
+  /* Midnight Blue Theme */
+  body.theme-midnight {
+    --primary: #1e88e5;
+    --secondary: #0d47a1;
+    --dark: #0a1929;
+    --darker: #050d16;
+    --light: #102a43;
+    --accent: #ff9800;
+    --glow: rgba(30, 136, 229, 0.7);
+    --terminal-bg: #050d16;
+    --terminal-fg: #64b5f6;
+    font-family: 'Rajdhani', sans-serif;
+    background-image: 
+      radial-gradient(circle, rgba(30, 136, 229, 0.1) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 152, 0, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px, 40px 40px;
+    background-position: 0 0, 15px 15px;
+  }
+  
+  body.theme-midnight h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(30, 136, 229, 0.8), 0 0 20px rgba(30, 136, 229, 0.4);
+  }
+  
+  body.theme-midnight .section::before {
+    background-image: 
+      linear-gradient(to right, rgba(30, 136, 229, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 136, 229, 0.05) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 152, 0, 0.08) 1px, transparent 2px);
+    background-size: 40px 40px, 40px 40px, 100px 100px;
+  }
+  
+  body.theme-midnight .section:nth-child(odd) {
+    background-color: #0c1a29;
+  }
+  
+  body.theme-midnight .section:nth-child(even) {
+    background-color: #0e2133;
+  }

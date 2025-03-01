@@ -1,0 +1,166 @@
+@import 'themes.css';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=VT323&family=Press+Start+2P&family=Comfortaa:wght@300;700&family=Rajdhani:wght@300;700&display=swap');
+
+:root {
+  --primary: #ff0099;
+  --secondary: #ff41b4;
+  --dark: #121212;
+  --darker: #0a0a0a;
+  --light: #2a2a2a;
+  --accent: #00ffff;
+  --glow: #ff00bb;
+  --terminal-bg: #000000;
+  --terminal-fg: #33ff33;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 8000px;
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+  background: var(--dark);
+  color: #e0e0e0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.section {
+  height: 100vh;
+  padding: 80px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 0, 153, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.5s ease, border-color 0.5s ease;
+}
+
+.section:nth-child(odd) {
+  background-color: #151515;
+}
+
+.section:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+/* Background grid effect for sections */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 0, 153, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 153, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 0;
+  pointer-events: none;
+  transition: background-image 0.5s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 0 10px var(--glow), 0 0 20px var(--glow);
+  font-weight: 900;
+  letter-spacing: -1px;
+  position: relative;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transition: background 0.5s ease;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+  transition: color 0.5s ease;
+}
+
+.toggle-button {
+  position: fixed;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 0, 153, 0.5);
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.5s ease, box-shadow 0.5s ease;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.toggle-button:hover {
+  transform: scale(1.1);
+}
+
+.toggle-button.active {
+  transform: rotate(45deg);
+}
+
+.toggle-controls {
+  bottom: 20px;
+  right: 20px;
+}
+
+.toggle-debug {
+  bottom: 20px;
+  left: 20px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .section {
+    padding-top: 100px;
+  }
+  
+  .section h1 {
+    font-size: 2rem;
+  }
+  
+  .toggle-controls {
+    bottom: 20px;
+    right: 10px;
+  }
+  
+  .toggle-debug {
+    bottom: 20px;
+    left: 10px;
+  }
+}
+
+/* Additional rules for very small screens */
+@media (max-width: 480px) {
+  .section h1 {
+    font-size: 1.7rem;
+  }
+}

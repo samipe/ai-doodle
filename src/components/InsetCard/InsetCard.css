@@ -1,0 +1,343 @@
+/* Inset card styles */
+.inset-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    transition: background 0.5s ease;
+  }
+  
+  .inset-container {
+    position: relative;
+    width: 300px;
+    height: 220px;
+    margin: 60px auto;
+    perspective: 800px;
+    overflow: visible;
+  }
+  
+  /* Particle effects for inset hole */
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    background: var(--primary);
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 3s infinite ease-in-out;
+    transition: background 0.5s ease;
+  }
+  
+  @keyframes float {
+    0% {
+      opacity: 0;
+      transform: translateY(0) translateX(0);
+    }
+    20% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-40px) translateX(20px);
+    }
+  }
+  
+  .inset-hole {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 30px;
+    background: var(--darker);
+    box-shadow: 
+      0 0 30px rgba(255, 0, 153, 0.3),
+      inset 0 0 30px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    border: 1px solid rgba(255, 0, 153, 0.3);
+    transform-style: preserve-3d;
+    transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  }
+  
+  /* Inner hole wall (organic curve effect) */
+  .inset-hole::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 28px;
+    background: 
+      radial-gradient(
+        ellipse at center, 
+        transparent 30%, 
+        var(--darker) 70%
+      );
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  /* Glowing rim effect */
+  .inset-hole::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border-radius: 25px;
+    box-shadow: 
+      inset 0 0 5px rgba(255, 0, 153, 0.5),
+      inset 0 0 10px rgba(255, 0, 153, 0.2);
+    z-index: 2;
+    background: transparent;
+    pointer-events: none;
+    transition: box-shadow 0.5s ease;
+  }
+  
+  .inset-card {
+    position: absolute;
+    width: 260px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 20px;
+    background: #181818;
+    padding: 20px;
+    box-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.8),
+      inset 0 0 2px rgba(255, 0, 153, 1),
+      inset 0 0 10px rgba(255, 0, 153, 0.5);
+    z-index: 3;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    color: #e0e0e0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 0, 153, 0.5);
+  }
+  
+  /* Ridiculous border effects */
+  .inset-card::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px dashed var(--primary);
+    border-radius: 16px;
+    pointer-events: none;
+    animation: borderPulse 4s infinite linear;
+  }
+  
+  @keyframes borderPulse {
+    0% {
+      border-color: var(--primary);
+      box-shadow: 0 0 5px var(--glow);
+    }
+    50% {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+      border-color: var(--primary);
+      box-shadow: 0 0 5px var(--glow);
+    }
+  }
+  
+  .inset-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: linear-gradient(
+      to bottom,
+      transparent, 
+      transparent, 
+      rgba(255, 0, 153, 0.13), 
+      rgba(255, 0, 153, 0.13)
+    );
+    transform: rotateZ(20deg);
+    animation: cardGlow 8s infinite ease;
+    transition: background 0.5s ease;
+  }
+  
+  @keyframes cardGlow {
+    0% {
+      transform: translateY(-80%) rotateZ(20deg);
+    }
+    50% {
+      transform: translateY(80%) rotateZ(20deg);
+    }
+    100% {
+      transform: translateY(-80%) rotateZ(20deg);
+    }
+  }
+  
+  .inset-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 5px var(--glow);
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+  }
+  
+  .inset-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary), transparent);
+    transition: background 0.5s ease;
+  }
+  
+  .inset-card p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #aaaaaa;
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s ease;
+  }
+  
+  /* Code-like elements */
+  .code-element {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    opacity: 0.7;
+    position: absolute;
+    z-index: 1;
+    transition: color 0.5s ease;
+  }
+  
+  .code-element:nth-child(1) {
+    top: 25px;
+    right: 15px;
+  }
+  
+  .code-element:nth-child(2) {
+    bottom: 20px;
+    left: 15px;
+  }
+  
+  /* Theme-specific styles */
+  body.theme-vaporwave .inset-card {
+    border: 2px dashed rgba(255, 0, 255, 0.7);
+    box-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.8),
+      inset 0 0 2px rgba(255, 0, 255, 1),
+      inset 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  
+  body.theme-matrix .inset-card {
+    border: none;
+    background: rgba(0, 17, 0, 0.95);
+    box-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.8),
+      inset 0 0 2px rgba(0, 255, 0, 1),
+      inset 0 0 10px rgba(0, 255, 0, 0.3);
+  }
+  
+  body.theme-matrix .inset-card::before {
+    border: 1px solid #00ff00;
+    animation: none;
+  }
+  
+  body.theme-light .inset-hole {
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.1),
+      inset 0 0 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  body.theme-light .inset-card {
+    background: white;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(52, 152, 219, 0.2);
+  }
+  
+  body.theme-light .inset-card::before {
+    border: none;
+    animation: none;
+  }
+  
+  body.theme-light .inset-card::after {
+    background: linear-gradient(
+      to bottom,
+      transparent, 
+      transparent, 
+      rgba(52, 152, 219, 0.08), 
+      rgba(52, 152, 219, 0.08)
+    );
+  }
+  
+  body.theme-midnight .inset-card {
+    background: #071525;
+    border: 1px solid rgba(30, 136, 229, 0.3);
+    box-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.8),
+      inset 0 0 2px rgba(30, 136, 229, 0.6),
+      inset 0 0 10px rgba(30, 136, 229, 0.3);
+  }
+  
+  body.theme-midnight .inset-card::before {
+    border: 1px solid #1e88e5;
+  }
+  
+  body.theme-midnight .inset-card::after {
+    background: linear-gradient(
+      to bottom,
+      transparent, 
+      transparent, 
+      rgba(30, 136, 229, 0.1), 
+      rgba(30, 136, 229, 0.1)
+    );
+  }
+  
+  body.theme-midnight .inset-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .inset-container {
+      width: 90%;
+      height: 200px;
+    }
+    
+    .inset-card {
+      width: calc(100% - 30px);
+      height: 180px;
+    }
+  }
