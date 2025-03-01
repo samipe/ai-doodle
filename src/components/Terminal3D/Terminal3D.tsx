@@ -1,7 +1,7 @@
 import { CSSProperties, useState, useEffect } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import CubeScene from '../ThreeCube/CubeScene';
-import './Terminal3D.css';
+import './Terminal3d.css';
 
 interface Terminal3DProps {
   style?: CSSProperties;
