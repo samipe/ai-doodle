@@ -1,53 +1,99 @@
-import { ReactNode } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import ThreeCube from './ThreeCube';
-import { useTheme } from '../../contexts/ThemeContext';
-import { ThemeName } from '../../types';
+import React, { Suspense, useMemo, useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
+import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
+import { BlendFunction } from 'postprocessing'
+import { Mesh } from 'three'
 
-const getThemeFogColor = (theme: ThemeName): string => {
-  switch (theme) {
-    case 'vaporwave':
-      return '#000066';
-    case 'matrix':
-      return '#001100';
-    case 'light':
-      return '#f0f0f0';
-    case 'midnight':
-      return '#050d16';
-    default: // Cyberpunk
-      return '#0a0a0a';
-  }
-};
-
-interface CubeSceneProps {
-  children?: ReactNode;
+interface CubeProps {
+  position?: [number, number, number];
+  color?: string;
+  rotationSpeed?: number;
 }
 
-const CubeScene = ({ children }: CubeSceneProps) => {
-  const { currentTheme } = useTheme();
-  const fogColor = getThemeFogColor(currentTheme);
+const Cube: React.FC<CubeProps> = ({ 
+  position = [0, 0, 0], 
+  color = '#ff3e00',
+  rotationSpeed = 0.01
+}) => {
+  const meshRef = useRef<Mesh>(null)
   
+  useFrame(() => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x += rotationSpeed
+      meshRef.current.rotation.y += rotationSpeed * 0.5
+    }
+  })
+
   return (
-    <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
-        <fog attach="fog" args={[fogColor, 5, 25]} />
+    <mesh ref={meshRef} position={position}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={color} />
+    </mesh>
+  )
+}
+
+interface CubeSceneProps {
+  noiseIntensity?: number;
+  noiseBlendFunction?: BlendFunction;
+  vignetteEnabled?: boolean;
+  backgroundColor?: string;
+  cubeColor?: string;
+}
+
+export const CubeScene: React.FC<CubeSceneProps> = ({
+  noiseIntensity = 0.2,
+  noiseBlendFunction = BlendFunction.OVERLAY,
+  vignetteEnabled = true,
+  backgroundColor = '#111',
+  cubeColor = '#ff3e00'
+}) => {
+  // Pre-define config to avoid unnecessary recalculations
+  const glConfig = useMemo(() => ({
+    powerPreference: 'high-performance',
+    antialias: false, // Disable built-in antialias for perf
+    precision: 'lowp', // Use lower precision for better performance
+    depth: true
+  }), []);
+
+  return (
+    <Canvas
+      dpr={0.5} // Fixed low resolution as artistic choice
+      gl={glConfig}
+      frameloop="demand" // Only renders when needed
+      style={{ background: backgroundColor }}
+    >
+      <Suspense fallback={null}>
+        {/* Lighting */}
         <ambientLight intensity={0.4} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#ffffff" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff0099" />
+        <pointLight position={[10, 10, 10]} intensity={1} />
         
-        <ThreeCube wireframe={true} size={4} />
+        {/* Scene content */}
+        <Cube color={cubeColor} />
+        <Cube position={[-1.5, 0, 0]} color="#0099ff" rotationSpeed={0.02} />
+        <Cube position={[1.5, 0, 0]} color="#44cc00" rotationSpeed={0.015} />
         
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false}
-          autoRotate 
-          autoRotateSpeed={0.5}
-        />
-      </Canvas>
-      {children}
-    </div>
-  );
-};
+        {/* Post-processing effects */}
+        <EffectComposer 
+          enabled 
+          multisampling={0} // Disable multisampling for performance
+          frameBufferType={16} // Use HALF_FLOAT buffer type for better performance
+        >
+          <Noise 
+            opacity={noiseIntensity} 
+            blendFunction={noiseBlendFunction}
+            premultiply // Optimize blend operation
+          />
+          {vignetteEnabled && (
+            <Vignette
+              offset={0.3}
+              darkness={0.7}
+              blendFunction={BlendFunction.NORMAL}
+            />
+          )}
+        </EffectComposer>
+      </Suspense>
+    </Canvas>
+  )
+}
 
 export default CubeScene;
