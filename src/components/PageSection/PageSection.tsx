@@ -6,13 +6,14 @@ export type BgStyle = 'plain' | 'colorful' | 'patterned' | 'animated' | 'crazy';
 
 interface PageSectionProps {
   children: ReactNode;
-  bgStyle: BgStyle;
+  bgStyle?: BgStyle;
+  bgEl?: ReactNode;
   style?: CSSProperties;
   className?: string;
   id?: string;
 }
 
-const PageSection = ({ children, bgStyle, style, className = '', id }: PageSectionProps) => {
+const PageSection = ({ children, bgStyle = 'plain', bgEl = null, style, className = '', id }: PageSectionProps) => {
   const { currentTheme } = useTheme();
   
   useEffect(() => {
@@ -32,7 +33,7 @@ const PageSection = ({ children, bgStyle, style, className = '', id }: PageSecti
     };
   }, []);
   
-  const themeClass = currentTheme === 'default' ? 'theme-default' : `theme-${currentTheme}`;
+  const themeClass = `theme-${currentTheme}`;
   const backgroundClass = `bg-${bgStyle}`;
   
   return (
@@ -41,6 +42,7 @@ const PageSection = ({ children, bgStyle, style, className = '', id }: PageSecti
       style={style}
       id={id}
     >
+      <div className='page-section-bg-slot'>{bgEl}</div>
       <div className="page-section-content">
         {children}
       </div>
