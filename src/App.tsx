@@ -44,14 +44,6 @@ const AppContent = () => {
         </div>
       </section>
       
-      <section className="section">
-        <div className="content">
-          <h1>Scroll Again</h1>
-          <p>This demo uses scroll velocity to drive a pendulum physics simulation, creating a natural-feeling animation for the floating tab bar.</p>
-          <p>Notice how the tab bar responds to your scrolling with inertia and natural physics.</p>
-        </div>
-      </section>
-      
       <Gyroscope 
         enabled={gyroscope.gyroState.enabled}
         alpha={gyroscope.gyroState.alpha}
