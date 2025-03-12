@@ -8,6 +8,7 @@ import InsetCard from './components/InsetCard/InsetCard';
 import Controls from './components/Controls/Controls';
 import DebugInfo from './components/DebugInfo/DebugInfo';
 import Gyroscope from './components/Gyroscope/Gyroscope';
+import PinkSphereSection from './components/PinkSphere/PinkSphereSection';
 import './styles/global.css';
 import PageSection from './components/PageSection/PageSection';
 import CubeScene from './components/ThreeCube/CubeScene';
@@ -34,8 +35,11 @@ const AppContent = () => {
         <TerminalBanner style={{ transform: physics.transforms.heroBanner }} />
       </PageSection>
       
+      {/* New Pink Sphere Section */}
+      <PinkSphereSection />
+      
       <PageSection bgStyle='crazy'>
-        asd
+        <InsetCard style={{ transform: physics.transforms.insetCard }} />
       </PageSection>
 
       <PageSection bgStyle='patterned'>
