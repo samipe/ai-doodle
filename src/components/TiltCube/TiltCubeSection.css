@@ -1,0 +1,31 @@
+.tilt-cube-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#111, #000);
+  perspective: 600px;
+}
+
+.tilt-cube {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s;
+}
+
+.tilt-cube .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--accent);
+}
+
+.face.front { transform: translateZ(75px); }
+.face.back { transform: rotateY(180deg) translateZ(75px); }
+.face.left { transform: rotateY(-90deg) translateZ(75px); }
+.face.right { transform: rotateY(90deg) translateZ(75px); }
+.face.top { transform: rotateX(90deg) translateZ(75px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(75px); }

@@ -1,0 +1,25 @@
+.audio-visual-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--darker);
+}
+
+.audio-visual-section canvas {
+  width: 80%;
+  max-width: 600px;
+  height: 200px;
+  background: #000;
+}
+
+.audio-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
