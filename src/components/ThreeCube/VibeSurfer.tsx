@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, type RootState } from '@react-three/fiber';
 import * as THREE from 'three';
 
 // Create cyber wave shader material
@@ -61,14 +61,14 @@ const cyberWaveShader = {
 };
 
 const VibeSurfer = () => {
-  const waveRef = useRef();
-  const shaderRef = useRef();
-  const surferRef = useRef();
+  const waveRef = useRef<THREE.Mesh>(null!);
+  const shaderRef = useRef<THREE.ShaderMaterial>(null!);
+  const surferRef = useRef<THREE.Group>(null!);
   
   // Create shader material
   const waveMaterial = new THREE.ShaderMaterial(cyberWaveShader);
   
-  useFrame((state, delta) => {
+  useFrame((state: RootState, delta: number) => {
     // Animate wave shader
     if (waveMaterial.uniforms) {
       waveMaterial.uniforms.uTime.value += delta;
