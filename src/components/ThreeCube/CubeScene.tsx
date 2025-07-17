@@ -73,22 +73,23 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
         <Cube position={[1.5, 0, 0]} color="#44cc00" rotationSpeed={0.015} />
         
         {/* Post-processing effects */}
-        <EffectComposer 
-          enabled 
+        <EffectComposer
+          enabled
           multisampling={0} // Disable multisampling for performance
-          frameBufferType={16} // Use HALF_FLOAT buffer type for better performance
         >
           <Noise 
             opacity={noiseIntensity} 
             blendFunction={noiseBlendFunction}
             premultiply // Optimize blend operation
           />
-          {vignetteEnabled && (
+          {vignetteEnabled ? (
             <Vignette
               offset={0.3}
               darkness={0.7}
               blendFunction={BlendFunction.NORMAL}
             />
+          ) : (
+            <></>
           )}
         </EffectComposer>
       </Suspense>

@@ -283,11 +283,49 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
+  background-image:
     repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.15) 1px, transparent 1px, transparent 10px),
     repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.15) 1px, transparent 1px, transparent 10px);
   background-size: 10px 10px;
   animation: matrixGrid 4s linear infinite;
+}
+
+/* Dedicated digital rain background */
+.bg-digitalrain.theme-matrix {
+  background-color: #000800;
+  position: relative;
+  overflow: hidden;
+  color: #00ff00;
+}
+
+.bg-digitalrain.theme-matrix::before,
+.bg-digitalrain.theme-matrix::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.bg-digitalrain.theme-matrix::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext x='0' y='14' fill='%2300ff00' font-size='16'%3E%2010%3C/text%3E%3C/svg%3E");
+  opacity: 0.2;
+  background-size: 20px 20px;
+  animation: digitalRain 10s linear infinite;
+}
+
+.bg-digitalrain.theme-matrix::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext x='0' y='14' fill='%2300ff00' font-size='16'%3E%2001%3C/text%3E%3C/svg%3E");
+  opacity: 0.3;
+  background-size: 20px 20px;
+  animation: digitalRain 12s linear infinite reverse;
+}
+
+@keyframes digitalRain {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
 }
 
 /* LIGHT - more dynamic color waves */
