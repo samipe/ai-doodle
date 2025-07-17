@@ -2,7 +2,7 @@ import { ReactNode, CSSProperties, useEffect } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import './PageSection.css';
 
-export type BgStyle = 'plain' | 'colorful' | 'patterned' | 'animated' | 'crazy';
+export type BgStyle = 'plain' | 'colorful' | 'patterned' | 'animated' | 'crazy' | 'digitalrain';
 
 interface PageSectionProps {
   children: ReactNode;

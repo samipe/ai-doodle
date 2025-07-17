@@ -1,0 +1,21 @@
+.tilt-card-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #111, #222);
+}
+
+.tilt-card-wrapper {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  width: 300px;
+  padding: 40px;
+  background: var(--dark);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transition: transform 0.1s ease-out;
+  text-align: center;
+}
