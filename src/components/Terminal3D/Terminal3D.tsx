@@ -14,7 +14,7 @@ const Terminal3D = ({ style }: Terminal3DProps) => {
   
   // Typewriter effect
   useEffect(() => {
-    const fullText = "Welcome to AI Doodle #0. This page is made using Claude 3.7 on a mobile phone without writing a single line of code myself!";
+    const fullText = "Welcome to AI Doodle #0. This page was created with a bit of generative sorcery and some clever code.";
     let index = 0;
     const timer = setInterval(() => {
       setText(fullText.substring(0, index));
@@ -36,9 +36,9 @@ const Terminal3D = ({ style }: Terminal3DProps) => {
   
   return (
     <section className="terminal3d-section">
-      <CubeScene>
-        <div className="terminal3d-container">
-          <div className="terminal3d-window terminal-scan-effect" style={style}>
+      <CubeScene />
+      <div className="terminal3d-container">
+        <div className="terminal3d-window terminal-scan-effect" style={style}>
             <div className="terminal-header">
               <div className="terminal-dots">
                 <div className="terminal-dot"></div>
@@ -68,8 +68,7 @@ const Terminal3D = ({ style }: Terminal3DProps) => {
             </div>
           </div>
         </div>
-      </CubeScene>
-    </section>
+      </section>
   );
 };
 

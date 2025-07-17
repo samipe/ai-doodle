@@ -2,7 +2,7 @@ import React, { Suspense, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
-import { Mesh } from 'three'
+import { Mesh, HalfFloatType } from 'three'
 
 interface CubeProps {
   position?: [number, number, number];
@@ -76,20 +76,20 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
         <EffectComposer 
           enabled 
           multisampling={0} // Disable multisampling for performance
-          frameBufferType={16} // Use HALF_FLOAT buffer type for better performance
+          frameBufferType={HalfFloatType} // Use HALF_FLOAT buffer type for better performance
         >
           <Noise 
             opacity={noiseIntensity} 
             blendFunction={noiseBlendFunction}
             premultiply // Optimize blend operation
           />
-          {vignetteEnabled && (
+          {vignetteEnabled ? (
             <Vignette
               offset={0.3}
               darkness={0.7}
               blendFunction={BlendFunction.NORMAL}
             />
-          )}
+          ) : null}
         </EffectComposer>
       </Suspense>
     </Canvas>

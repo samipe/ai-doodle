@@ -9,6 +9,9 @@ import Controls from './components/Controls/Controls';
 import DebugInfo from './components/DebugInfo/DebugInfo';
 import Gyroscope from './components/Gyroscope/Gyroscope';
 import PinkSphereSection from './components/PinkSphere/PinkSphereSection';
+import SurferSection from './components/SurferSection/SurferSection';
+import AudioVisualizerSection from './components/AudioVisualizer/AudioVisualizer';
+import DigitalRain from './components/DigitalRain/DigitalRain';
 import './styles/global.css';
 import PageSection from './components/PageSection/PageSection';
 import CubeScene from './components/ThreeCube/CubeScene';
@@ -37,9 +40,14 @@ const AppContent = () => {
       
       {/* New Pink Sphere Section */}
       <PinkSphereSection />
-      
+
       <PageSection bgStyle='crazy'>
         <InsetCard style={{ transform: physics.transforms.insetCard }} />
+      </PageSection>
+
+      <PageSection bgStyle='digitalrain' bgEl={currentTheme === 'matrix' ? <DigitalRain /> : null}>
+        <h1>Digital Rain</h1>
+        <p>A tribute to streaming code and endless data.</p>
       </PageSection>
 
       <PageSection bgStyle='patterned'>
@@ -48,17 +56,13 @@ const AppContent = () => {
           <p>Notice how the tab bar responds to your scrolling with inertia and natural physics.</p>
       </PageSection>
 
-      <PageSection bgStyle='colorful'>
-          <h1>Scroll Down</h1>
-          <p>This demo uses scroll velocity to drive a pendulum physics simulation, creating a natural-feeling animation for the floating tab bar.</p>
-          <p>Notice how the tab bar responds to your scrolling with inertia and natural physics.</p>
+      <PageSection bgStyle='plain'>
+        <Terminal3D />
       </PageSection>
-      
-      {/* Placeholder sections */}
-      <section className="section">
-        <div className="content">
-        </div>
-      </section>
+
+      <SurferSection />
+
+      <AudioVisualizerSection />
       
       <Gyroscope 
         enabled={gyroscope.gyroState.enabled}
