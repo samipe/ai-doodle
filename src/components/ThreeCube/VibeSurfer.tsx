@@ -61,9 +61,9 @@ const cyberWaveShader = {
 };
 
 const VibeSurfer = () => {
-  const waveRef = useRef();
-  const shaderRef = useRef();
-  const surferRef = useRef();
+  const waveRef = useRef<THREE.Mesh>(null);
+  const shaderRef = useRef<THREE.ShaderMaterial>(null);
+  const surferRef = useRef<THREE.Group>(null);
   
   // Create shader material
   const waveMaterial = new THREE.ShaderMaterial(cyberWaveShader);
