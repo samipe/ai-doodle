@@ -34,7 +34,7 @@ const TerminalBanner = ({ style }: TerminalBannerProps) => {
         </div>
         <div style={{ marginTop: '5px' }}>
           <span className="terminal-prompt">[INFO]</span>
-          <span className="terminal-text">This page is made using Claude 3.7 on a mobile phone without writing a single line of code myself!</span>
+          <span className="terminal-text">This playground was assembled with a little help from generative AI.</span>
         </div>
         <div style={{ marginTop: '20px' }}>
           <span className="terminal-prompt">$</span>

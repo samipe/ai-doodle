@@ -1,0 +1,10 @@
+.vibe-surfer-section {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #001, #000);
+}
+
+.vibe-canvas {
+  width: 100%;
+  height: 100%;
+}
