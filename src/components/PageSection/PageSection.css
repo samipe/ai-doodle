@@ -72,6 +72,15 @@
   background: linear-gradient(45deg, #050d16 0%, #1e88e5 100%);
 }
 
+/* DIGITAL RAIN BACKGROUND */
+.bg-digitalrain {
+  position: relative;
+  overflow: hidden;
+}
+.bg-digitalrain.theme-matrix {
+  background-color: #000800;
+}
+
 /* PATTERNED BACKGROUNDS */
 .bg-patterned.theme-default {
   background-color: var(--darker);
