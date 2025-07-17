@@ -4,6 +4,8 @@ import { useGyroscope } from './hooks/useGyroscope';
 import TabBar from './components/TabBar/TabBar';
 import TerminalBanner from './components/TerminalBanner/TerminalBanner';
 import Terminal3D from './components/Terminal3D/Terminal3D';
+import VibeSurferSection from './components/VibeSurfer/VibeSurferSection';
+import AudioVisualizerSection from './components/AudioVisualizer/AudioVisualizerSection';
 import InsetCard from './components/InsetCard/InsetCard';
 import Controls from './components/Controls/Controls';
 import DebugInfo from './components/DebugInfo/DebugInfo';
@@ -34,31 +36,18 @@ const AppContent = () => {
       <PageSection bgEl={<CubeScene />} bgStyle='patterned'>
         <TerminalBanner style={{ transform: physics.transforms.heroBanner }} />
       </PageSection>
-      
-      {/* New Pink Sphere Section */}
+
+      <Terminal3D />
+
       <PinkSphereSection />
-      
+
+      <VibeSurferSection />
+
       <PageSection bgStyle='crazy'>
         <InsetCard style={{ transform: physics.transforms.insetCard }} />
       </PageSection>
 
-      <PageSection bgStyle='patterned'>
-          <h1>Scroll Down</h1>
-          <p>This demo uses scroll velocity to drive a pendulum physics simulation, creating a natural-feeling animation for the floating tab bar.</p>
-          <p>Notice how the tab bar responds to your scrolling with inertia and natural physics.</p>
-      </PageSection>
-
-      <PageSection bgStyle='colorful'>
-          <h1>Scroll Down</h1>
-          <p>This demo uses scroll velocity to drive a pendulum physics simulation, creating a natural-feeling animation for the floating tab bar.</p>
-          <p>Notice how the tab bar responds to your scrolling with inertia and natural physics.</p>
-      </PageSection>
-      
-      {/* Placeholder sections */}
-      <section className="section">
-        <div className="content">
-        </div>
-      </section>
+      <AudioVisualizerSection />
       
       <Gyroscope 
         enabled={gyroscope.gyroState.enabled}
