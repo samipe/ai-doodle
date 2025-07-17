@@ -1,0 +1,13 @@
+.pink-sphere-section {
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #330033, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pink-sphere-canvas {
+  width: 300px;
+  height: 300px;
+}
