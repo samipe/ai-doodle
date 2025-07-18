@@ -267,13 +267,19 @@
 .bg-crazy.theme-matrix::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(transparent, rgba(0, 255, 0, 0.2));
-  background-size: 100% 50px;
-  animation: matrixFall 3s linear infinite;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 0, 0.25) 0px,
+    rgba(0, 255, 0, 0.25) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: matrixRain 8s linear infinite;
+  pointer-events: none;
 }
 
 .bg-crazy.theme-matrix::after {
@@ -283,11 +289,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
+  background-image:
     repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.15) 1px, transparent 1px, transparent 10px),
     repeating-linear-gradient(90deg, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.15) 1px, transparent 1px, transparent 10px);
   background-size: 10px 10px;
   animation: matrixGrid 4s linear infinite;
+  pointer-events: none;
 }
 
 /* LIGHT - more dynamic color waves */

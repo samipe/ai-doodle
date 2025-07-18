@@ -23,6 +23,7 @@ body.theme-vaporwave {
     font-family: 'Press Start 2P', cursive;
     letter-spacing: 2px;
     text-shadow: 4px 4px 0px #00ffff, -4px -4px 0px #ff00ff;
+    animation: glowPulse 6s infinite;
   }
   
   body.theme-vaporwave .section::before {
@@ -59,6 +60,7 @@ body.theme-vaporwave {
     letter-spacing: 0;
     font-size: 2.8rem;
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    animation: glowPulse 6s infinite;
   }
   
   body.theme-matrix .section::before {
@@ -105,6 +107,7 @@ body.theme-vaporwave {
     font-weight: 700;
     color: #333;
     text-shadow: 2px 2px 0px rgba(52, 152, 219, 0.2);
+    animation: glowPulse 6s infinite;
   }
   
   body.theme-light .section::before {
@@ -152,6 +155,7 @@ body.theme-vaporwave {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 10px rgba(30, 136, 229, 0.8), 0 0 20px rgba(30, 136, 229, 0.4);
+    animation: glowPulse 6s infinite;
   }
   
   body.theme-midnight .section::before {
@@ -169,3 +173,8 @@ body.theme-vaporwave {
   body.theme-midnight .section:nth-child(even) {
     background-color: #0e2133;
   }
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: none; }
+  50% { text-shadow: 0 0 10px var(--glow); }
+}

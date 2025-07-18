@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Suspense, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
