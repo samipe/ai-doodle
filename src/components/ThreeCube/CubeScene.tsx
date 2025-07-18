@@ -2,7 +2,7 @@ import React, { Suspense, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
-import { Mesh } from 'three'
+import { Mesh, HalfFloatType } from 'three'
 
 interface CubeProps {
   position?: [number, number, number];
@@ -38,6 +38,7 @@ interface CubeSceneProps {
   vignetteEnabled?: boolean;
   backgroundColor?: string;
   cubeColor?: string;
+  children?: React.ReactNode;
 }
 
 export const CubeScene: React.FC<CubeSceneProps> = ({
@@ -45,7 +46,8 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
   noiseBlendFunction = BlendFunction.OVERLAY,
   vignetteEnabled = true,
   backgroundColor = '#111',
-  cubeColor = '#ff3e00'
+  cubeColor = '#ff3e00',
+  children
 }) => {
   // Pre-define config to avoid unnecessary recalculations
   const glConfig = useMemo(() => ({
@@ -56,12 +58,13 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
   }), []);
 
   return (
-    <Canvas
-      dpr={0.5} // Fixed low resolution as artistic choice
-      gl={glConfig}
-      frameloop="demand" // Only renders when needed
-      style={{ background: backgroundColor }}
-    >
+    <div style={{ position: 'relative' }}>
+      <Canvas
+        dpr={0.5} // Fixed low resolution as artistic choice
+        gl={glConfig}
+        frameloop="demand" // Only renders when needed
+        style={{ background: backgroundColor }}
+      >
       <Suspense fallback={null}>
         {/* Lighting */}
         <ambientLight intensity={0.4} />
@@ -73,26 +76,30 @@ export const CubeScene: React.FC<CubeSceneProps> = ({
         <Cube position={[1.5, 0, 0]} color="#44cc00" rotationSpeed={0.015} />
         
         {/* Post-processing effects */}
-        <EffectComposer 
-          enabled 
+        <EffectComposer
+          enabled
           multisampling={0} // Disable multisampling for performance
-          frameBufferType={16} // Use HALF_FLOAT buffer type for better performance
+          frameBufferType={HalfFloatType} // Use HALF_FLOAT buffer type for better performance
         >
           <Noise 
             opacity={noiseIntensity} 
             blendFunction={noiseBlendFunction}
             premultiply // Optimize blend operation
           />
-          {vignetteEnabled && (
+          {vignetteEnabled ? (
             <Vignette
               offset={0.3}
               darkness={0.7}
               blendFunction={BlendFunction.NORMAL}
             />
+          ) : (
+            <></>
           )}
         </EffectComposer>
       </Suspense>
     </Canvas>
+    {children}
+    </div>
   )
 }
 
